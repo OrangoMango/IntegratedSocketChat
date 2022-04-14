@@ -40,6 +40,6 @@ You can also use the following commands to moderate the chat:
 * `/banip` <ip-address> Ban the ip address
 * `/unbanip` <ip-address> Unban the ip address
 * `/banlist` View current banlist
-* `/list` List connected users
+* `/list` List connected users in current room
 * `/rooms` Display available rooms
 * `/setroom` <username> <roomCode> Set the room for a specified username
