@@ -1,4 +1,4 @@
-# SocketChatRoom
+# IntegratedSocketChat
 Java socket chat room with TCP connection.  
 Package: `com.orangomango.socket`
 
