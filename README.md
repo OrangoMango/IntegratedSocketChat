@@ -1,5 +1,6 @@
 # SocketChatRoom
-Java socket chat room with tcp connection
+Java socket chat room with TCP connection.  
+Package: `com.orangomango.socket`
 
 # How to use
 ## Quick setup
