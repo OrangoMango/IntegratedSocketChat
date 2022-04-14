@@ -98,11 +98,10 @@ public class Server {
 							String victim = command.split(" ")[1];
 							String msg = command.split(" ", 3)[2];
 							for (ClientManager client : ClientManager.clients){
-								if (client.username.equals(victim)){
+								if (client.username.equals(victim) || victim.equals(ClientManager.EVERYONE)){
 									client.writer.write(ClientManager.YELLOW+"SERVER: "+msg+ClientManager.RESET);
 									client.writer.newLine();
 									client.writer.flush();
-									break;
 								}
 							}
 						}

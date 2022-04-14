@@ -19,6 +19,7 @@ public class ClientManager implements Runnable{
 	public static final String RESET = "\u001B[0m";
 	
 	public static final String ALL_ROOMS = "$all";
+	public static final String EVERYONE = "$everyone";
 	public static final Room LOBBY_ROOM = new Room("lobby", "$server");
 	public static final String NAME_ALREADY_TAKEN = RED+"ERROR: Name already taken"+RESET;
 	public static final String YOU_HAVE_BEEN_KICKED = RED+"ERROR: You have been kicked"+RESET;
@@ -42,7 +43,7 @@ public class ClientManager implements Runnable{
 					break;
 				}
 			}
-			if (found || username.equals("$server")){
+			if (found || username.equals("$server") || username.equals(EVERYONE)){
 				this.writer.write(NAME_ALREADY_TAKEN);
 				this.writer.newLine();
 				this.writer.flush();
