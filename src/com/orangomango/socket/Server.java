@@ -8,6 +8,7 @@ public class Server {
 	
 	private ServerSocket server;
 	public static ArrayList<String> banlist = new ArrayList<>();
+	public static ArrayList<String> ipbanlist = new ArrayList<>();
 	public static ArrayList<Room> rooms = new ArrayList<>();
 	
 	static {
@@ -110,6 +111,20 @@ public class Server {
 						}
 					} else if (command.startsWith("/banlist")){
 						System.out.println(ClientManager.YELLOW+banlist.toString()+ClientManager.RESET);
+					} else if (command.startsWith("/banip")){
+						if (command.split(" ").length == 1){
+							System.out.println(ClientManager.RED+"Usage: /banip <ip-address>"+ClientManager.RESET);
+						} else {
+							String victim = command.split(" ")[1];
+							for (ClientManager cm : ClientManager.clients){
+								System.out.println(cm.host);
+								if (cm.host.equals(victim)){
+									kick(cm.username, ClientManager.YOU_HAVE_BEEN_BANNED);
+									break;
+								}
+							}
+							ipbanlist.add(victim);
+						}
 					} else if (command.startsWith("/ban")){
 						if (command.split(" ").length == 1){
 							System.out.println(ClientManager.RED+"Usage: /ban <username>"+ClientManager.RESET);
@@ -179,7 +194,7 @@ public class Server {
 				System.out.println("Usage: Server <host> <port>. Using default values");
 			}
 			
-			System.out.println(ClientManager.GREEN+"Server started on localhost at port "+port+ClientManager.RESET);
+			System.out.println(ClientManager.GREEN+"Server started on "+host+" at port "+port+ClientManager.RESET);
 			ServerSocket ss = new ServerSocket(port, 10, InetAddress.getByName(host));
 			Server server = new Server(ss);
 			server.listenForCommands();

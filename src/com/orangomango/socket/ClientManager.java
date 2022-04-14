@@ -10,6 +10,7 @@ public class ClientManager implements Runnable{
 	public BufferedWriter writer;
 	public String username;
 	public String roomCode;
+	public String host;
 	
 	public static final String RED = "\u001B[31m";
 	public static final String GREEN = "\u001B[32m";
@@ -31,6 +32,7 @@ public class ClientManager implements Runnable{
 			this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			this.writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			this.roomCode = rc;
+			this.host = socket.getInetAddress().getHostAddress();
 			
 			this.username = this.reader.readLine();
 			boolean found = false;
@@ -56,6 +58,12 @@ public class ClientManager implements Runnable{
 					break;
 				}
 			}
+			for (String ip : Server.ipbanlist){
+				if (ip.equals(this.host)){
+					banned = true;
+					break;
+				}
+			}
 			if (banned){
 				this.writer.write(YOU_HAVE_BEEN_BANNED);
 				this.writer.newLine();
@@ -66,7 +74,7 @@ public class ClientManager implements Runnable{
 			
 			clients.add(this);
 			broadcastMessage(GREEN+this.username+" joined the server"+RESET, true);
-			System.out.println(GREEN+socket.getInetAddress().getHostAddress()+":"+socket.getLocalPort()+"("+this.username+") connected"+RESET);
+			System.out.println(GREEN+this.host+":"+socket.getLocalPort()+"("+this.username+") connected"+RESET);
 		} catch (IOException e){
 			close();
 		}
