@@ -24,7 +24,7 @@ There are 2 ways to run a client:
 From the client side you can simply write text and it will be sent to the other connected clients and the server.  
 Use <Kbd>Ctrl+C</Kbd> to disconnect.  
 Each client can use the following commands:
-* `/list` to get the current connected users
+* `/list` to get the current connected users in the room
 * `/room <roomCode>` switch room
 * `/lobby` move to lobby
 * `@<username> msg` to privatly send a message to `username`. Message will be sent to the destinator AND the server.   
@@ -40,6 +40,6 @@ You can also use the following commands to moderate the chat:
 * `/banip` <ip-address> Ban the ip address
 * `/unbanip` <ip-address> Unban the ip address
 * `/banlist` View current banlist
-* `/list` List connected users in current room
+* `/list` List connected users in entire server
 * `/rooms` Display available rooms
 * `/setroom` <username> <roomCode> Set the room for a specified username
