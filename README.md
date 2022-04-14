@@ -26,7 +26,7 @@ Use <Kbd>Ctrl+C</Kbd> to disconnect.
 Each client can use the following commands:
 * `/list` to get the current connected users in the room
 * `/room <roomCode>` switch room
-* `/lobby` move to lobby
+* `/lobby` or `/room lobby` move to lobby
 * `@<username> msg` to privatly send a message to `username`. Message will be sent to the destinator AND the server.   
   Example: `@John hello`
 ## Server
