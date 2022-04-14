@@ -37,8 +37,8 @@ You can also use the following commands to moderate the chat:
 * `/say <username> <message>` Send a private `message` to `username`. Use `$everyone` to make an announcement.
 * `/ban <username>` Ban the specified username. They cannot rejoin anymore untill they are unbanned.
 * `/unban <username>` Unban the specified username.
-* `/banip` <ip-address> Ban the ip address
-* `/unbanip` <ip-address> Unban the ip address
+* `/banip <ip-address>` Ban the ip address
+* `/unbanip <ip-address>` Unban the ip address
 * `/banlist` View current banlist
 * `/list` List connected users in entire server
 * `/rooms` Display available rooms
