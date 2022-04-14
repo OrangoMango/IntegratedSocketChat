@@ -25,6 +25,8 @@ From the client side you can simply write text and it will be sent to the other 
 Use <Kbd>Ctrl+C</Kbd> to disconnect.  
 Each client can use the following commands:
 * `/list` to get the current connected users
+* `/room <roomCode>` switch room
+* `/lobby` move to lobby
 * `@<username> msg` to privatly send a message to `username`. Message will be sent to the destinator AND the server.   
   Example: `@John hello`
 ## Server
@@ -35,5 +37,9 @@ You can also use the following commands to moderate the chat:
 * `/say <username> <message>` Send a private `message` to `username`.
 * `/ban <username>` Ban the specified username. They cannot rejoin anymore untill they are unbanned.
 * `/unban <username>` Unban the specified username.
+* `/banip` <ip-address> Ban the ip address
+* `/unbanip` <ip-address> Unban the ip address
 * `/banlist` View current banlist
 * `/list` List connected users
+* `/rooms` Display available rooms
+* `/setroom` <username> <roomCode> Set the room for a specified username
