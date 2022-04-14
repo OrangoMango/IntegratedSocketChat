@@ -14,7 +14,7 @@ There are 2 ways to start the server:
 * run `java com.orangomango.socket.Server` and you will start a server with default values (host=localhost and port=1234)
 * run `java com.orangomango.socket.Server <host> <port>` and you will start a server with the specified port and host
 ## Connect a client
-You can connect a client, either from another device in the same LAN or from the same device using another terminal
+You can connect a client, either from another device or from the same device using another terminal
 There are 2 ways to run a client:
 * run `com.orangomango.socket.Client` and you will use a client with default values (host=localhost and port=1234)
 * run `com.orangomango.socket.Client <host> <port>` and you will use a client with the specified values
