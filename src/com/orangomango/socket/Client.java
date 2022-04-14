@@ -76,7 +76,7 @@ public class Client {
 		try {
 			int port = 1234;
 			String host = "localhost";
-			if (args.length > 2){
+			if (args.length >= 2){
 				try {
 					host = args[0];
 					port = Integer.parseInt(args[1]);

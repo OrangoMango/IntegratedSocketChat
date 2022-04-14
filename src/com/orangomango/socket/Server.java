@@ -129,19 +129,21 @@ public class Server {
 	public static void main(String[] args) {
 		try {
 			int port = 1234;
-			if (args.length > 0){
+			String host = "localhost";
+			if (args.length >= 2){
 				try {
-					port = Integer.parseInt(args[0]);
+					host = args[0];
+					port = Integer.parseInt(args[1]);
 				} catch (NumberFormatException ex) {
 					System.out.println("Invalid port!");
 					return;
 				}
 			} else {
-				System.out.println("Usage: Server <port>. Using default values");
+				System.out.println("Usage: Server <host> <port>. Using default values");
 			}
 			
 			System.out.println(ClientManager.GREEN+"Server started on localhost at port "+port+ClientManager.RESET);
-			ServerSocket ss = new ServerSocket(port);
+			ServerSocket ss = new ServerSocket(port, 10, InetAddress.getByName(host));
 			Server server = new Server(ss);
 			server.listenForCommands();
 			server.start();
