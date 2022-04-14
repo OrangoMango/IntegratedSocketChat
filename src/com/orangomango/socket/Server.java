@@ -76,7 +76,7 @@ public class Server {
 							System.out.println(ClientManager.RED+"Usage: /say <username> <msg>"+ClientManager.RESET);
 						} else {
 							String victim = command.split(" ")[1];
-							String msg = command.split(" ", 2)[2];
+							String msg = command.split(" ", 3)[2];
 							for (ClientManager client : ClientManager.clients){
 								if (client.username.equals(victim)){
 									client.writer.write(ClientManager.YELLOW+"SERVER: "+msg+ClientManager.RESET);
