@@ -8,6 +8,11 @@ public class Server {
 	
 	private ServerSocket server;
 	public static ArrayList<String> banlist = new ArrayList<>();
+	public static ArrayList<Room> rooms = new ArrayList<>();
+	
+	static {
+		rooms.add(ClientManager.LOBBY_ROOM);
+	}
 	
 	public Server(ServerSocket server){
 		this.server = server;
@@ -17,7 +22,7 @@ public class Server {
 		while (!this.server.isClosed()){
 			try {
 				Socket socket = this.server.accept();
-				new Thread(new ClientManager(socket)).start();
+				new Thread(new ClientManager(socket, ClientManager.LOBBY_ROOM.roomCode)).start();
 			} catch (IOException e){
 				close();
 			}
@@ -40,11 +45,21 @@ public class Server {
 		}
 	}
 	
-	public static String getUsers(){
+	public static Room getRoomByCode(String code){
+		for (Room r : rooms){
+			if (r.roomCode.equals(code)){
+				return r;
+			}
+		}
+		return null;
+	}
+	
+	public static String getUsers(String room){
 		StringBuilder builder = new StringBuilder();
 		builder.append("Connected users:\n");
 		for (ClientManager client : ClientManager.clients){
-			builder.append(client.username+" ");
+			if (client.roomCode.equals(room) || room.equals("$all"))
+				builder.append(client.username+"["+client.roomCode+"] ");
 		}
 		return ClientManager.YELLOW+builder.toString()+ClientManager.RESET;
 	}
@@ -104,7 +119,29 @@ public class Server {
 							banlist.add(victim);
 						}
 					} else if (command.startsWith("/list")){
-						System.out.println(getUsers());
+						System.out.println(getUsers(ClientManager.ALL_ROOMS));
+					} else if (command.startsWith("/setroom")){
+						if (command.split(" ").length < 3){
+							System.out.println(ClientManager.RED+"Usage: /setroom <username> <roomCode>"+ClientManager.RESET);
+						} else {
+							String victim = command.split(" ")[1];
+							String setRoom = command.split(" ")[2];
+							for (ClientManager client : ClientManager.clients){
+								if (client.username.equals(victim)){
+									client.writer.write(client.changeRoom(setRoom));
+									client.writer.newLine();
+									client.writer.flush();
+									break;
+								}
+							}
+						}
+					} else if (command.startsWith("/rooms")){
+						StringBuilder builder = new StringBuilder();
+						builder.append("Available rooms:\n");
+						for (Room room : rooms){
+							builder.append(room.roomCode+"["+room.roomOwner+"] ");
+						}
+						System.out.println(ClientManager.YELLOW+builder.toString()+ClientManager.RESET);
 					} else {
 						System.out.println(ClientManager.RED+"Invalid command!"+ClientManager.RESET);
 					}

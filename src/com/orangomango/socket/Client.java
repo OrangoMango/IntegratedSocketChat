@@ -64,6 +64,7 @@ public class Client {
 					if (message == null){
 						throw new IOException("Server closed");
 					}
+					if (message.equals("")) continue;
 					System.out.println(message);
 				}
 			} catch (IOException ex){
