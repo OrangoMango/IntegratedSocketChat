@@ -71,8 +71,11 @@ public class Server {
 	 * /say <username> <message> Write a private message to a user
 	 * /ban <username> Ban a user
 	 * /unban <username> Unban a user
+	 * /banip <ip-address> Ban the ip address
 	 * /banlist View banlist
 	 * /list Display connected users
+	 * /rooms Display available rooms
+	 * /setroom <username> <roomCode> Set the room for a specified username
 	 */
 	public void listenForCommands(){
 		new Thread(() -> {
