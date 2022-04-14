@@ -34,7 +34,7 @@ In the server console you will get messages when someone connects/disconnects or
 Use <Kbd>Ctrl+C</Kbd> to close the server and disconnect all clients.  
 You can also use the following commands to moderate the chat:
 * `/kick <username>` Kick the specified username from server session. They can still rejoin.
-* `/say <username> <message>` Send a private `message` to `username`.
+* `/say <username> <message>` Send a private `message` to `username`. Use `$everyone` to make an announcement.
 * `/ban <username>` Ban the specified username. They cannot rejoin anymore untill they are unbanned.
 * `/unban <username>` Unban the specified username.
 * `/banip` <ip-address> Ban the ip address
