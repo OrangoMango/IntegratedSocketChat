@@ -72,6 +72,7 @@ public class Server {
 	 * /ban <username> Ban a user
 	 * /unban <username> Unban a user
 	 * /banip <ip-address> Ban the ip address
+	 * /unbanip <ip-address> Unban the ip address
 	 * /banlist View banlist
 	 * /list Display connected users
 	 * /rooms Display available rooms
@@ -105,6 +106,13 @@ public class Server {
 								}
 							}
 						}
+					} else if (command.startsWith("/unbanip")){
+						if (command.split(" ").length == 1){
+							System.out.println(ClientManager.RED+"Usage: /unbanip <ip-address>"+ClientManager.RESET);
+						} else {
+							String victim = command.split(" ")[1];
+							ipbanlist.remove(victim);
+						}
 					} else if (command.startsWith("/unban")){
 						if (command.split(" ").length == 1){
 							System.out.println(ClientManager.RED+"Usage: /unban <username>"+ClientManager.RESET);
@@ -119,11 +127,9 @@ public class Server {
 							System.out.println(ClientManager.RED+"Usage: /banip <ip-address>"+ClientManager.RESET);
 						} else {
 							String victim = command.split(" ")[1];
-							for (ClientManager cm : ClientManager.clients){
-								System.out.println(cm.host);
+							for (ClientManager cm : new ArrayList<ClientManager>(ClientManager.clients)){
 								if (cm.host.equals(victim)){
 									kick(cm.username, ClientManager.YOU_HAVE_BEEN_BANNED);
-									break;
 								}
 							}
 							ipbanlist.add(victim);
