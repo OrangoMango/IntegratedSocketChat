@@ -42,4 +42,4 @@ You can also use the following commands to moderate the chat:
 * `/banlist` View current banlist
 * `/list` List connected users in entire server
 * `/rooms` Display available rooms
-* `/setroom` <username> <roomCode> Set the room for a specified username
+* `/setroom <username> <roomCode>` Set the room for a specified username
