@@ -91,6 +91,8 @@ public class Server {
 							String victim = command.split(" ")[1];
 							kick(victim,ClientManager.YOU_HAVE_BEEN_KICKED);
 						}
+					} else if (command.equals("/help")){
+						System.out.println(ClientManager.YELLOW+"Available commands:\n/kick <username> Kick a user from current session\n/say <username> <message> Write a private message to a user\n/ban <username> Ban a user\n/unban <username> Unban a user\n/banip <ip-address> Ban the ip address\n/unbanip <ip-address> Unban the ip address\n/banlist View banlist\n/list Display connected users\n/rooms Display available rooms\n/setroom <username> <roomCode> Set the room for a specified username"+ClientManager.RESET);
 					} else if (command.startsWith("/say")){
 						if (command.split(" ").length < 3){
 							System.out.println(ClientManager.RED+"Usage: /say <username> <msg>"+ClientManager.RESET);

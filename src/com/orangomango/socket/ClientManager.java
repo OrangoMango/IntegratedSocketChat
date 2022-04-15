@@ -140,6 +140,15 @@ public class ClientManager implements Runnable{
 			} catch (IOException e){
 				close();
 			}
+		} else if (message.equals(this.username+": /help")){
+			try {
+				this.writer.write(YELLOW+"Available commands:\n/list Display connected users in this room\n/room <roomCode> Switch room\n/lobby or /room lobby Go to lobby"+RESET);
+				this.writer.newLine();
+				this.writer.flush();
+				return;
+			} catch (IOException e){
+				close();
+			}
 		} else if (message.startsWith(this.username+": /room") || message.equals(this.username+": /lobby")){
 			String serverMessage;
 			if (message.split(" ").length >= 3 || message.equals(this.username+": /lobby")){
