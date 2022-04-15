@@ -43,6 +43,8 @@ You can also use the following commands to moderate the chat:
 * `/list` List connected users in entire server
 * `/rooms` Display available rooms
 * `/setroom <username> <roomCode>` Set the room for a specified username
+## Help
+Use command `/help` to display available commands
 # Screenshot
 Video: [here](https://vimeo.com/699735435)
 ![socket](https://user-images.githubusercontent.com/61402409/163555469-cbb4350f-f3d0-4d62-b802-75daa32d652f.png)
