@@ -27,7 +27,7 @@ Each client can use the following commands:
 * `/list` to get the current connected users in the room
 * `/room <roomCode>` switch room
 * `/lobby` or `/room lobby` move to lobby
-* `@<username> msg` to privatly send a message to `username`. Message will be sent to the destinator AND the server.   
+* `@<username> msg` to privately send a message to `username`. The message will be sent to the destinator AND the server.   
   Example: `@John hello`
 ## Server
 In the server console you will get messages when someone connects/disconnects or someone writes something.  
