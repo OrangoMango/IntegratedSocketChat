@@ -7,7 +7,7 @@ Package: `com.orangomango.socket`
 Clone the repository and change the directory to `bin`
 ```bash
 git clone https://github.com/OrangoMango/IntegratedSocketChat
-cd SocketChatRoom/bin
+cd IntegratedSocketChat/bin
 ```
 ## Start the server
 There are 2 ways to start the server:
